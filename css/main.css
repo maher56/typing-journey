@@ -1,0 +1,280 @@
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  background: url("../img/1.jpg") #4dd0e1 no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+body#traning nav.main {
+  padding: 5px;
+  color: #fff;
+  box-shadow: 0px 0px 5px 0px black;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+body#traning nav.main .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0px;
+}
+body#traning nav.main .content button {
+  padding: 6px 20px;
+  font-size: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 5px 0px black;
+  margin-right: 20px;
+}
+body#traning nav.main .content button.active {
+  box-shadow: 0 0 0 0.2rem #343a40;
+}
+@media (max-width: 575px) {
+  body#traning nav.main .content {
+    flex-direction: column;
+  }
+  body#traning nav.main .content button {
+    margin: 10px 10px auto auto;
+  }
+}
+body#traning .main-content {
+  margin-top: 50px;
+  display: flex;
+  flex-flow: wrap column;
+}
+body#traning .main-content .script {
+  width: 90%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  height: 60%;
+  padding: 15px 10px;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 2;
+}
+body#traning .main-content .script .textContainer {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+body#traning .main-content .script span {
+  position: relative;
+  font-size: 20px;
+  padding: 1.5px;
+}
+body#traning .main-content .script span.active:before {
+  content: "";
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  background-color: #01f5a8;
+  bottom: 2px;
+  right: 0;
+  opacity: 1;
+  animation: hell 1s infinite linear;
+}
+@keyframes hell {
+  0%, 10%, 20%, 30%, 40%, 50% {
+    opacity: 1;
+  }
+  60%, 70%, 80%, 90%, 100% {
+    opacity: 0;
+  }
+}
+body#traning .main-content .script span.hidden {
+  color: transparent;
+}
+body#traning .main-content .script span.end {
+  visibility: hidden;
+}
+body#traning .main-content .options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+body#traning .main-content .options .speed {
+  color: #6c757d;
+  font-size: 25px;
+}
+body#traning .main-content .options .speed span {
+  font-size: 30px;
+  color: #f8f9fa;
+}
+body#traning .main-content .clouds {
+  position: absolute;
+  width: 100%;
+  bottom: -40px;
+  height: 125px;
+  left: 0px;
+}
+body#traning .main-content .clouds div {
+  position: absolute;
+  color: green;
+  height: 125px;
+  width: 60000px;
+  background-repeat: repeat-x;
+}
+body#traning .main-content .clouds div:nth-of-type(1) {
+  background-image: url("../img/clouds3.png");
+  left: -3000px;
+  animation: move-right 100s infinite linear;
+}
+body#traning .main-content .clouds div:nth-of-type(2) {
+  background-image: url("../img/clouds1.png");
+  animation: move-left 100s infinite linear;
+}
+body#traning .main-content .clouds div:nth-of-type(3) {
+  bottom: -20px;
+  left: -3000px;
+  background-image: url("../img/clouds2.png");
+  animation: move-right 100s infinite linear;
+}
+@keyframes move-right {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(2000px);
+  }
+}
+@keyframes move-left {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(-2000px);
+  }
+}
+body#traning .popup {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.95);
+  left: 0;
+  top: 100%;
+  transition: top 0.5s;
+}
+body#traning .popup .container {
+  position: relative;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+  height: 100%;
+}
+body#traning .popup .container span:last-child {
+  color: #777;
+}
+body#traning .popup .container h3:first-of-type {
+  margin-bottom: 30px;
+}
+body#traning .popup .container .again {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+body#index nav.secondary {
+  padding: 5px;
+  color: #fff;
+  box-shadow: 0px 0px 5px 0px black;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+body#index .main-content {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}
+body#index .main-content .text {
+  margin-top: 150px;
+}
+body#index .main-content .text h3 {
+  text-align: left;
+  color: white;
+}
+body#index .main-content .text button {
+  margin-top: 40px;
+  padding: 6px 20px;
+  font-size: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 5px 0px black;
+  margin-right: 20px;
+}
+body#index .main-content .text buttonfocus {
+  border-color: #6610f2;
+  box-shadow: 0 0 0 0.2rem #343a40;
+}
+body#index .main-content .moon img {
+  margin-top: 100px;
+  width: 200px;
+  filter: drop-shadow(0px 0px 10px #fff);
+}
+body#index .main-content .clouds {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  height: 125px;
+  left: 0px;
+}
+body#index .main-content .clouds div {
+  position: absolute;
+  color: green;
+  height: 125px;
+  width: 60000px;
+  background-repeat: repeat-x;
+}
+body#index .main-content .clouds div:nth-of-type(1) {
+  background-image: url("../img/clouds3.png");
+  left: -3000px;
+  animation: move-right 100s infinite linear;
+}
+body#index .main-content .clouds div:nth-of-type(2) {
+  background-image: url("../img/clouds1.png");
+  animation: move-left 100s infinite linear;
+}
+body#index .main-content .clouds div:nth-of-type(3) {
+  bottom: -20px;
+  left: -3000px;
+  background-image: url("../img/clouds2.png");
+  animation: move-right 100s infinite linear;
+}
+@keyframes move-right {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(2000px);
+  }
+}
+@keyframes move-left {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(-2000px);
+  }
+}
+@media (max-width: 575px) {
+  body#index .main-content .moon {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
