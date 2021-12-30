@@ -102,8 +102,9 @@ else {
     text = storyTexts[Math.floor(Math.random() * storyTexts.length)]
 }
 let content = ""
-let rightButton = new Audio("../img/alert-234.mp3")
-let wrongButton = new Audio("../img/error-1110.mp3")
+// let rightButton = new Audio("../img/alert-234.mp3")
+// let wrongButton = new Audio("../img/error-1110.mp3")
+let right = 0 , wrong = 0;
 text = text.split(' ');
 for(let i = 0 , j = text.length ; i < j ; i++){
     let word = "";
@@ -134,11 +135,16 @@ fetch($(document).keydown(function (e) {
         
         wpm++;
         
-        rightButton.cloneNode().play();
+        // rightButton.cloneNode().play();
+        $('body').append(`<audio class = a${++right}  style = "position:absolute;" autoplay><source src="img/alert-234.mp3"></audio>`);
+        let xright = right;
+        setTimeout(() => {
+            $(`.a${xright}`).remove();
+        } , 1000);
         current = $("#traning .script span.active");
         if(typeof current.parent().prev().offset() !== "undefined"){
             if(current.parent().prev().offset().top + 5 < current.offset().top && current.prev().text() === "")
-                content.scrollTop(content.scrollTop() + 30);
+            content.scrollTop(content.scrollTop() + 30);
         }
         if(current.hasClass("end")){
             endText = false;
@@ -150,8 +156,12 @@ fetch($(document).keydown(function (e) {
     else if(letters.includes(e.key)){
         current.css("backgroundColor" , "rgb(255 0 0 / 50%)");
         
-        wrongButton.cloneNode().play();
-        
+        // wrongButton.cloneNode().play();
+        $('body').append(`<audio class = b${++wrong} style = "position:absolute;" autoplay><source src="img/error-1110.mp3"></audio>`);
+        let xwrong = wrong;
+        setTimeout(() => {
+            $(`.b${xwrong}`).remove();
+        } , 1000);
         current.animate({"left" : "1px"} , 100)
         .animate({"left" : "-1px"} , 100)
         .animate({"left" : "1px"} , 100)
