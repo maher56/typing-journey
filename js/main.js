@@ -143,7 +143,7 @@ fetch($(document).keydown(function (e) {
         } , 1000);
         current = $("#traning .script span.active");
         if(typeof current.parent().prev().offset() !== "undefined"){
-            if(current.parent().prev().offset().top + 5 < current.offset().top && current.prev().text() === "")
+            if(current.parent().prev().offset().top + 5< current.parent().offset().top && current.prev().text() === "")
             content.scrollTop(content.scrollTop() + 30);
         }
         if(current.hasClass("end")){
