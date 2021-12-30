@@ -102,8 +102,8 @@ else {
     text = storyTexts[Math.floor(Math.random() * storyTexts.length)]
 }
 let content = ""
-let rightButton = new Audio("../img/alert-234.wav")
-let wrongButton = new Audio("../img/error-1110.wav")
+let rightButton = new Audio("../img/alert-234.mp3")
+let wrongButton = new Audio("../img/error-1110.mp3")
 text = text.split(' ');
 for(let i = 0 , j = text.length ; i < j ; i++){
     let word = "";

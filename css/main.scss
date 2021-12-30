@@ -96,19 +96,17 @@ nav.main {
             &.end{visibility: hidden;}
         }
     }
-    .options {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
     .speed {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
         color: $secondary;
         font-size: 25px;
         span {
             font-size: 30px;
             color: $light;
         }
-    }
     }
     .clouds {
         position: absolute;

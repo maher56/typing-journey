@@ -11,7 +11,7 @@ a:hover {
 }
 
 body {
-  background: url("../img/1.jpg") #4dd0e1 no-repeat;
+  background-image: url(../img/sky2.png), linear-gradient(0deg, #084f8e, #083466 80%);
   background-size: cover;
   overflow: hidden;
 }
@@ -99,17 +99,15 @@ body#traning .main-content .script span.hidden {
 body#traning .main-content .script span.end {
   visibility: hidden;
 }
-body#traning .main-content .options {
+body#traning .main-content .speed {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 20px;
-}
-body#traning .main-content .options .speed {
   color: #6c757d;
   font-size: 25px;
 }
-body#traning .main-content .options .speed span {
+body#traning .main-content .speed span {
   font-size: 30px;
   color: #f8f9fa;
 }
