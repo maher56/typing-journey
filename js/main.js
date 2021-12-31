@@ -170,6 +170,8 @@ fetch($(document).keydown(function (e) {
         }
         current.removeClass("active");
         if(!current.hasClass("mranga")) wpm--;
+        current.css({"color" : "white" , "background-color" : "inherit"});
+        current.removeClass("mranga");
         if(current.prev().text() == "") {
             current = current.parent().prev().children();
             current.eq(current.length - 1).addClass("active");
@@ -180,6 +182,7 @@ fetch($(document).keydown(function (e) {
         rightSound()
         current = $("#traning .script span.active");
         current.css({"color" : "white" , "background-color" : "inherit"});
+        current.removeClass("mranga");
         if(current.hasClass("hidden"))current.css("color" , "transparent");
         if(typeof current.parent().prev().offset() !== "undefined"){
             if(current.parent().next().offset().top - 5 > current.parent().offset().top && current.next().text() === "")
