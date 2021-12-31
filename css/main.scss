@@ -15,8 +15,9 @@ a {
     }
 }
 body {
-    background: url("../img/1.jpg") $sub-color no-repeat;
+    background-image: url(../img/sky2.png), linear-gradient(0deg, #084f8e, #083466 80%);
     background-size: cover;
+    background-repeat:  no-repeat;
     overflow: hidden;
 }
 body#traning {

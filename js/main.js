@@ -109,17 +109,30 @@ text = text.split(' ');
 for(let i = 0 , j = text.length ; i < j ; i++){
     let word = "";
     text[i].split("").forEach((e , j) => {
-        if(i === 0 && j ===0)word +=`<span class = "active">${e}</span>`;
+        if(i === 0 && j ===0)word +=`<span class = "active startText">${e}</span>`;
         else word += `<span>${e}</span>`;
     });
-    word += `<span class = "hidden ${i == j - 1 ? "end" : ""}">s</span>`;
+    word += `<span class = "endWord hidden ${i == j - 1 ? "end" : ""}">s</span>`;
     content += `<div class = "word">${word}</div>`;
 };
 $("#traning .script").html(`<div class = "textContainer">${content}</div>`);
 let letters = 'abcdefghijklmnopqrstyvwxyzABCDEFGHIJKLMNOPQRSTYVWXYZ ';
 let wpm = 0 , endText = true;
 let date = new Date() , start = 0;
-
+function rightSound() {
+    $('body').append(`<audio class = a${++right}  style = "position:absolute;" autoplay><source src="img/alert-234.mp3"></audio>`);
+    let xright = right;
+    setTimeout(() => {
+        $(`.a${xright}`).remove();
+    } , 1000);
+}
+function wrongSound() {
+    $('body').append(`<audio class = b${++wrong} style = "position:absolute;" autoplay><source src="img/error-1110.mp3"></audio>`);
+    let xwrong = wrong;
+    setTimeout(() => {
+        $(`.b${xwrong}`).remove();
+    } , 1000);
+}
 fetch($(document).keydown(function (e) {
     if(!endText || $("body").attr("id") !== "traning")return;
     let content = $("#traning .script");
@@ -129,39 +142,45 @@ fetch($(document).keydown(function (e) {
     if((current.hasClass("hidden") ? " " : current.text()) === e.key){
         current.removeClass("active");
         
-        if(current.next().text() == "")
-        current.parent().next().children().eq(0).addClass("active");
+        if(current.next().text() == "") {
+            current.parent().next().children().eq(0).addClass("active");
+            $(current.siblings()).css("color" , "green");
+        }
         else current.next().addClass("active");        
         
         wpm++;
         
         // rightButton.cloneNode().play();
-        $('body').append(`<audio class = a${++right}  style = "position:absolute;" autoplay><source src="img/alert-234.mp3"></audio>`);
-        let xright = right;
-        setTimeout(() => {
-            $(`.a${xright}`).remove();
-        } , 1000);
+        rightSound();
         current = $("#traning .script span.active");
         if(typeof current.parent().prev().offset() !== "undefined"){
             if(current.parent().prev().offset().top + 5< current.parent().offset().top && current.prev().text() === "")
             content.scrollTop(content.scrollTop() + 30);
         }
         if(current.hasClass("end")){
+            $(current.siblings()).css("color" , "green");
             endText = false;
             setTimeout(() => {
                 $(".popup").css("top" , "0");
             },500);
         }
     }
+    else if (e.key === 'Backspace') {
+        console.log(e.key , current)
+        if(current.hasClass("endWord") || current.hasClass("startText") || current.prev().text() === "" ) {
+            wrongSound();
+            return;
+        }
+        current.removeClass("active");
+        current.prev().addClass("active")
+        rightSound()
+        wpm--;
+    }
     else if(letters.includes(e.key)){
         current.css("backgroundColor" , "rgb(255 0 0 / 50%)");
         
         // wrongButton.cloneNode().play();
-        $('body').append(`<audio class = b${++wrong} style = "position:absolute;" autoplay><source src="img/error-1110.mp3"></audio>`);
-        let xwrong = wrong;
-        setTimeout(() => {
-            $(`.b${xwrong}`).remove();
-        } , 1000);
+        wrongSound();
         current.animate({"left" : "1px"} , 100)
         .animate({"left" : "-1px"} , 100)
         .animate({"left" : "1px"} , 100)

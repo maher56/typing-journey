@@ -23,6 +23,7 @@ body {
   background-image: url(../img/sky2.png), -o-linear-gradient(bottom, #084f8e, #083466 80%);
   background-image: url(../img/sky2.png), linear-gradient(0deg, #084f8e, #083466 80%);
   background-size: cover;
+  background-repeat: no-repeat;
   overflow: hidden;
 }
 
@@ -71,7 +72,7 @@ body#traning nav.main .content button.active {
 }
 body#traning .main-content {
   margin-top: 50px;
-  display: -webkit-box; 
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
@@ -80,7 +81,10 @@ body#traning .main-content {
           flex-flow: wrap column;
 }
 body#traning .main-content .script {
-    -webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   width: 90%;
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
