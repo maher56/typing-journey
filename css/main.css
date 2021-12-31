@@ -1,13 +1,5 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.3.6,
-* Autoprefixer: v10.3.1
-* Browsers: last 4 version
-*/
-
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 a {
@@ -19,8 +11,6 @@ a:hover {
 }
 
 body {
-  background-image: url(../img/sky2.png), -webkit-gradient(linear, left bottom, left top, from(#084f8e), color-stop(80%, #083466));
-  background-image: url(../img/sky2.png), -o-linear-gradient(bottom, #084f8e, #083466 80%);
   background-image: url(../img/sky2.png), linear-gradient(0deg, #084f8e, #083466 80%);
   background-size: cover;
   background-repeat: no-repeat;
@@ -30,20 +20,13 @@ body {
 body#traning nav.main {
   padding: 5px;
   color: #fff;
-  -webkit-box-shadow: 0px 0px 5px 0px black;
-          box-shadow: 0px 0px 5px 0px black;
+  box-shadow: 0px 0px 5px 0px black;
   background-color: rgba(0, 0, 0, 0.1);
 }
 body#traning nav.main .content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   padding: 4px 0px;
 }
 body#traning nav.main .content button {
@@ -51,20 +34,15 @@ body#traning nav.main .content button {
   font-size: 20px;
   color: white;
   background-color: rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 0px 0px 5px 0px black;
-          box-shadow: 0px 0px 5px 0px black;
+  box-shadow: 0px 0px 5px 0px black;
   margin-right: 20px;
 }
 body#traning nav.main .content button.active {
-  -webkit-box-shadow: 0 0 0 0.2rem #343a40;
-          box-shadow: 0 0 0 0.2rem #343a40;
+  box-shadow: 0 0 0 0.2rem #343a40;
 }
 @media (max-width: 575px) {
   body#traning nav.main .content {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
   body#traning nav.main .content button {
     margin: 10px 10px auto auto;
@@ -72,19 +50,11 @@ body#traning nav.main .content button.active {
 }
 body#traning .main-content {
   margin-top: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: wrap column;
-          flex-flow: wrap column;
+  flex-flow: wrap column;
 }
 body#traning .main-content .script {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   width: 90%;
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
@@ -97,14 +67,9 @@ body#traning .main-content .script {
 }
 body#traning .main-content .script .textContainer {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
 body#traning .main-content .script span {
   position: relative;
@@ -120,16 +85,7 @@ body#traning .main-content .script span.active:before {
   bottom: 2px;
   right: 0;
   opacity: 1;
-  -webkit-animation: hell 1s infinite linear;
-          animation: hell 1s infinite linear;
-}
-@-webkit-keyframes hell {
-  0%, 10%, 20%, 30%, 40%, 50% {
-    opacity: 1;
-  }
-  60%, 70%, 80%, 90%, 100% {
-    opacity: 0;
-  }
+  animation: hell 1s infinite linear;
 }
 @keyframes hell {
   0%, 10%, 20%, 30%, 40%, 50% {
@@ -146,15 +102,9 @@ body#traning .main-content .script span.end {
   visibility: hidden;
 }
 body#traning .main-content .speed {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   margin-top: 20px;
   color: #6c757d;
   font-size: 25px;
@@ -166,7 +116,7 @@ body#traning .main-content .speed span {
 body#traning .main-content .clouds {
   position: absolute;
   width: 100%;
-  bottom: -40px;
+  bottom: 0px;
   height: 125px;
   left: 0px;
 }
@@ -174,65 +124,36 @@ body#traning .main-content .clouds div {
   position: absolute;
   color: green;
   height: 125px;
-  width: 60000px;
+  width: 100%;
   background-repeat: repeat-x;
 }
 body#traning .main-content .clouds div:nth-of-type(1) {
   background-image: url("../img/clouds3.png");
-  left: -3000px;
-  -webkit-animation: move-right 100s infinite linear;
-          animation: move-right 100s infinite linear;
+  animation: move-right 100s infinite linear;
 }
 body#traning .main-content .clouds div:nth-of-type(2) {
   background-image: url("../img/clouds1.png");
-  -webkit-animation: move-left 100s infinite linear;
-          animation: move-left 100s infinite linear;
+  animation: move-left 100s infinite linear;
 }
 body#traning .main-content .clouds div:nth-of-type(3) {
   bottom: -20px;
-  left: -3000px;
   background-image: url("../img/clouds2.png");
-  -webkit-animation: move-right 100s infinite linear;
-          animation: move-right 100s infinite linear;
-}
-@-webkit-keyframes move-right {
-  from {
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
-  }
-  to {
-    -webkit-transform: translateX(2000px);
-            transform: translateX(2000px);
-  }
+  animation: move-right 100s infinite linear;
 }
 @keyframes move-right {
   from {
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    background-position-x: left;
   }
   to {
-    -webkit-transform: translateX(2000px);
-            transform: translateX(2000px);
-  }
-}
-@-webkit-keyframes move-left {
-  from {
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
-  }
-  to {
-    -webkit-transform: translateX(-2000px);
-            transform: translateX(-2000px);
+    background-position-x: -200%;
   }
 }
 @keyframes move-left {
   from {
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    background-position-x: left;
   }
   to {
-    -webkit-transform: translateX(-2000px);
-            transform: translateX(-2000px);
+    background-position-x: 200%;
   }
 }
 body#traning .popup {
@@ -242,26 +163,15 @@ body#traning .popup {
   background-color: rgba(0, 0, 0, 0.95);
   left: 0;
   top: 100%;
-  -webkit-transition: top 0.5s;
-  -o-transition: top 0.5s;
   transition: top 0.5s;
 }
 body#traning .popup .container {
   position: relative;
   color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column wrap;
-          flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
   height: 100%;
 }
 body#traning .popup .container span:last-child {
@@ -281,17 +191,12 @@ body#traning .popup .container .again {
 body#index nav.secondary {
   padding: 5px;
   color: #fff;
-  -webkit-box-shadow: 0px 0px 5px 0px black;
-          box-shadow: 0px 0px 5px 0px black;
+  box-shadow: 0px 0px 5px 0px black;
   background-color: rgba(0, 0, 0, 0.1);
 }
 body#index .main-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  justify-content: space-evenly;
   text-align: center;
 }
 body#index .main-content .text {
@@ -307,20 +212,17 @@ body#index .main-content .text button {
   font-size: 20px;
   color: white;
   background-color: rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 0px 0px 5px 0px black;
-          box-shadow: 0px 0px 5px 0px black;
+  box-shadow: 0px 0px 5px 0px black;
   margin-right: 20px;
 }
 body#index .main-content .text buttonfocus {
   border-color: #6610f2;
-  -webkit-box-shadow: 0 0 0 0.2rem #343a40;
-          box-shadow: 0 0 0 0.2rem #343a40;
+  box-shadow: 0 0 0 0.2rem #343a40;
 }
 body#index .main-content .moon img {
   margin-top: 100px;
   width: 200px;
-  -webkit-filter: drop-shadow(0px 0px 10px #fff);
-          filter: drop-shadow(0px 0px 10px #fff);
+  filter: drop-shadow(0px 0px 10px #fff);
 }
 body#index .main-content .clouds {
   position: absolute;
@@ -333,49 +235,45 @@ body#index .main-content .clouds div {
   position: absolute;
   color: green;
   height: 125px;
-  width: 60000px;
+  width: 100%;
   background-repeat: repeat-x;
 }
 body#index .main-content .clouds div:nth-of-type(1) {
   background-image: url("../img/clouds3.png");
-  left: -3000px;
-  -webkit-animation: move-right 100s infinite linear;
-          animation: move-right 100s infinite linear;
+  animation: move-right 100s infinite linear;
 }
 body#index .main-content .clouds div:nth-of-type(2) {
   background-image: url("../img/clouds1.png");
-  -webkit-animation: move-left 100s infinite linear;
-          animation: move-left 100s infinite linear;
+  animation: move-left 100s infinite linear;
 }
 body#index .main-content .clouds div:nth-of-type(3) {
   bottom: -20px;
-  left: -3000px;
   background-image: url("../img/clouds2.png");
-  -webkit-animation: move-right 100s infinite linear;
-          animation: move-right 100s infinite linear;
+  animation: move-right 100s infinite linear;
 }
 @keyframes move-right {
   from {
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    background-position-x: left;
   }
   to {
-    -webkit-transform: translateX(2000px);
-            transform: translateX(2000px);
+    background-position-x: -200%;
   }
 }
 @keyframes move-left {
   from {
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    background-position-x: left;
   }
   to {
-    -webkit-transform: translateX(-2000px);
-            transform: translateX(-2000px);
+    background-position-x: 200%;
   }
 }
 @media (max-width: 575px) {
   body#index .main-content .moon {
     display: none;
   }
+  body#index .main-content {
+    justify-content: center;
+  }
 }
+
+/*# sourceMappingURL=main.css.map */
