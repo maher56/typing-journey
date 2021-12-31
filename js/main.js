@@ -133,7 +133,7 @@ function wrongSound() {
         $(`.b${xwrong}`).remove();
     } , 1000);
 }
-// $(".mobile").focus();
+$(".mobile").focus();
 $(".script").click(() => {$(".mobile").focus();});
 fetch($(document).keydown(function (e) {
     if(!endText || $("body").attr("id") !== "traning")return;
