@@ -78,12 +78,11 @@ So, the three little pigs lived happily together ever after in their very smart 
 ]
 
 let activeTraning = window.localStorage.getItem("activeTraning");
-if(activeTraning === "true")activeTraning = 1;
-else activeTraning = 0;
+activeTraning = (activeTraning === "true")
+function setHeightOfMainContent(){$(".main-content").outerHeight($(window).height() - $("nav").outerHeight(), true);}
 
-$(".main-content").outerHeight($(window).height() - $("nav").outerHeight(), true);
-
-$(window).resize(() => {$(".main-content").outerHeight($(window).height() - $("nav").outerHeight(), true);}); 
+setHeightOfMainContent();
+$(window).resize(() => {setHeightOfMainContent();}); 
 
 $(".traning").click(() => {
     window.localStorage.setItem("activeTraning" , "true");
@@ -94,13 +93,11 @@ $(".story").click(() => {
     window.location.reload();
 })
 $(`${activeTraning ? ".traning" : ".story"}`).addClass("active")
+
 let text;
-if(activeTraning) {
-    text = traningTexts[Math.floor(Math.random() * traningTexts.length)]
-}
-else {
-    text = storyTexts[Math.floor(Math.random() * storyTexts.length)]
-}
+activeTraning ? text = traningTexts[Math.floor(Math.random() * traningTexts.length)]
+:text = storyTexts[Math.floor(Math.random() * storyTexts.length)]
+
 let content = ""
 // let rightButton = new Audio("../img/alert-234.mp3")
 // let wrongButton = new Audio("../img/error-1110.mp3")
@@ -112,12 +109,12 @@ for(let i = 0 , j = text.length ; i < j ; i++){
         if(i === 0 && j ===0)word +=`<span class = "active startText">${e}</span>`;
         else word += `<span>${e}</span>`;
     });
-    word += `<span class = "endWord hidden ${i == j - 1 ? "end" : ""}">s</span>`;
+    word += `<span class = "endWord hidden ${i == j - 1 ? "end" : ""}">_</span>`;
     content += `<div class = "word">${word}</div>`;
 };
 $("#traning .script").html(`<div class = "textContainer">${content}</div>`);
 let letters = 'abcdefghijklmnopqrstyvwxyzABCDEFGHIJKLMNOPQRSTYVWXYZ ';
-let wpm = 0 , endText = true;
+let wpm = 0 , endText = false;
 let date = new Date() , start = 0;
 function rightSound() {
     $('body').append(`<audio class = a${++right}  style = "position:absolute;" autoplay><source src="img/alert-234.mp3"></audio>`);
@@ -135,18 +132,16 @@ function wrongSound() {
 }
 $(".mobile").focus();
 $(".script").click(() => {$(".mobile").focus();console.log($(".mobile").val())});
-fetch($(document).keydown(function (e) {
-    if(!endText || $("body").attr("id") !== "traning")return;
+$(document).keydown(function (e) {
+    if(endText || $("body").attr("id") !== "traning")return;
     let content = $("#traning .script");
     let current = $("#traning .script span.active");
     current.finish();
     if((current.hasClass("hidden") ? " " : current.text()) === e.key){
         current.removeClass("active");
         
-        if(current.next().text() == "") {
-            current.parent().next().children().eq(0).addClass("active");
-        }
-        else current.next().addClass("active");        
+        (current.next().text() == ""? current.parent().next().children().eq(0).addClass("active")
+        :current.next().addClass("active"));        
         
         wpm++;
         if(!current.hasClass("hidden") && !current.hasClass("mranga"))current.css("color" , "green");
@@ -154,25 +149,20 @@ fetch($(document).keydown(function (e) {
         // rightButton.cloneNode().play();
         rightSound();
         current = $("#traning .script span.active");
-        if(typeof current.parent().prev().offset() !== "undefined"){
-            if(current.parent().prev().offset().top + 5< current.parent().offset().top && current.prev().text() === "")
+        if((typeof current.parent().prev().offset() !== "undefined")
+        && (current.parent().prev().offset().top + 5< current.parent().offset().top && current.prev().text() === ""))
             content.scrollTop(content.scrollTop() + 30);
-        }
         if(current.hasClass("end")){
-            endText = false;
-            setTimeout(() => {
-                $(".popup").css("top" , "0");
-            },500);
+            endText = true;
+            setTimeout(() => {$(".popup").css("top" , "0");},500);
         }
     }
     else if (e.key === 'Backspace') {
-        if(current.hasClass("startText")) {
-            wrongSound();
-            return;
-        }
+        if(current.hasClass("startText")) {wrongSound();return;}
+
         current.removeClass("active");
         if(!current.hasClass("mranga")) wpm--;
-        current.css({"color" : "white" , "background-color" : "inherit"});
+        if(!current.hasClass("hidden"))current.css({"color" : "white" , "background-color" : "inherit"});
         current.removeClass("mranga");
         if(current.prev().text() == "") {
             current = current.parent().prev().children();
@@ -202,11 +192,14 @@ fetch($(document).keydown(function (e) {
         .animate({"left" : "1px"} , 100)
         .animate({"left" : "-1px"} , 100)
         .animate({"left" : "0px"} , 100)
+        current.removeClass("active");
+        (current.next().text() == ""? current.parent().next().children().eq(0).addClass("active")
+        :current.next().addClass("active"));
     }
-}));
+});
 $(document).one("keydown" ,()=> {
     let finished = setInterval(() => {
-        if(!endText)clearInterval(finished);
+        if(endText)clearInterval(finished);
         start+=2;
         let speed = Math.floor((wpm / 5) / (start /60));
         $("span.current").text(Math.max(speed , $(".speed span").text()));
@@ -216,7 +209,5 @@ $(document).one("keydown" ,()=> {
         $("span.best").text(window.localStorage.getItem("maxSpeedTyping"));
     } , 2000)
 });
-$(".again").click(() => {
-    window.location.reload();
-});
+$(".again").click(() => {window.location.reload();});
 $("html").css({"overflow" : "hidden" , "height" : `731px`})
